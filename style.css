@@ -1,0 +1,424 @@
+:root {
+  --pink-pastel: #fce4e8;
+  --pink-dark: #d698a3;
+  --white: #ffffff;
+  --text-dark: #4a3f41;
+  --text-muted: #806e71;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-cursive: 'Pinyon Script', cursive; 
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+  background-color: var(--pink-pastel);
+  color: var(--text-dark); 
+  font-family: var(--font-sans); 
+  text-align: center; 
+  overflow-x: hidden !important; 
+  width: 100vw;
+}
+
+/* CONTENEDOR FINAL CON FONDO REPETIDO Y OPACIDAD BAJADA MEDIANTE GRADIENTE */
+#seccion-final {
+  background-color: var(--white);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('img/fondo.png');
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: center top;
+}
+
+.bloque-contenido-general {
+  padding: 30px 0 0 0;
+}
+
+.section-pad { padding: 45px 20px; max-width: 400px; margin: 0 auto; }
+.oculto { display: none; }
+.text-center { text-align: center; }
+
+/* PORTADA CON VIDEO */
+.video-hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 500px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+#videoPortada {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.05) 40%, transparent 100%);
+}
+
+/* TARJETAS BLANCAS CON SOMBRA DELICADA */
+.card-pastel {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(214, 152, 163, 0.3);
+  padding: 35px 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(214, 152, 163, 0.15);
+}
+
+.xv-message-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+
+/* TIPOGRAFÍAS TÍTULOS */
+.title-elegant {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: var(--pink-dark);
+  text-transform: uppercase;
+}
+
+.subtitle-cursive {
+  font-family: var(--font-cursive);
+  font-size: 2.3rem; 
+  color: var(--text-muted);
+  margin-top: 5px;
+}
+
+/* SAVE THE DATE (RASPADITAS) */
+.scratch-circles-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.circle-scratch-card {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(214, 152, 163, 0.25);
+}
+
+.circle-reveal-content {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--pink-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.circle-reveal-content.revealed-glow {
+  box-shadow: 0 0 15px rgba(214, 152, 163, 0.6);
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+.circle-number {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--pink-dark);
+  line-height: 1;
+}
+
+.circle-label {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* CANVAS DE LA RASPADITA */
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 5;
+  cursor: pointer;
+  border: 2px solid var(--white);
+  /* Touch action none para que no haga scroll al raspar */
+  touch-action: none;
+}
+
+.std-revealed-info {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.8s ease;
+  margin-top: 0;
+}
+
+.std-revealed-info.show-revealed {
+  max-height: 350px; 
+  opacity: 1;
+}
+
+/* CUENTA REGRESIVA */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.time-box {
+  background: var(--white);
+  border: 1px solid rgba(214, 152, 163, 0.4);
+  padding: 12px;
+  border-radius: 10px;
+  min-width: 65px;
+  box-shadow: 0 5px 15px rgba(214, 152, 163, 0.1);
+}
+
+.time-box span {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--pink-dark);
+  display: block;
+  line-height: 1;
+}
+
+.time-box small {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  display: block;
+}
+
+/* CRONOGRAMA TIMELINE Y BOTÓN MAPA */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.timeline-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--pink-pastel);
+  color: var(--pink-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(214, 152, 163, 0.4);
+}
+
+.timeline-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.t-date {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--pink-dark);
+  letter-spacing: 1.5px;
+}
+
+.t-place {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.btn-map {
+  display: inline-block;
+  background: var(--white);
+  color: var(--pink-dark);
+  border: 1px solid rgba(214, 152, 163, 0.6);
+  padding: 6px 14px;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-map:hover {
+  background: var(--pink-dark);
+  color: var(--white);
+}
+
+/* DRESS CODE */
+.dress-code-box {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(214, 152, 163, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.dress-badge {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: var(--pink-dark);
+}
+
+.dress-rule {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+/* REGALO INTERACTIVO (ACORDEÓN) */
+.icon-circle-head {
+  width: 55px; height: 55px; border-radius: 50%; background: var(--pink-pastel); 
+  color: var(--pink-dark); display: flex; align-items: center; justify-content: center; 
+  margin: 0 auto; font-size: 1.3rem; border: 1px solid rgba(214, 152, 163, 0.4);
+}
+
+.btn-accordion-toggle {
+  background: var(--pink-dark);
+  color: #fff;
+  border: none;
+  padding: 13px 20px;
+  width: 100%;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(214, 152, 163, 0.4);
+  transition: background 0.3s ease;
+}
+
+.gift-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  padding: 0 5px;
+}
+
+.gift-accordion-content.open {
+  max-height: 350px;
+  padding: 15px 5px 5px 5px;
+}
+
+.gift-text { font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); }
+
+.bank-box {
+  background: var(--pink-pastel);
+  padding: 15px;
+  border-radius: 10px;
+}
+.bank-alias { font-weight: 600; color: var(--text-dark); font-size: 1rem; }
+
+.btn-copy {
+  background: var(--white);
+  color: var(--pink-dark);
+  border: 1px solid var(--pink-dark);
+  padding: 8px 16px;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.rsvp-limit { font-size: 0.8rem; color: var(--text-muted); font-style: italic; }
+
+.btn-main { 
+  display: inline-block; 
+  padding: 15px 30px; 
+  border-radius: 50px; 
+  font-family: var(--font-sans); 
+  font-size: 0.75rem; 
+  letter-spacing: 2px; 
+  text-decoration: none; 
+  background-color: var(--pink-dark); 
+  color: var(--white); 
+  width: 100%; 
+  font-weight: 600; 
+  box-shadow: 0 8px 20px rgba(214, 152, 163, 0.4); 
+}
+
+/* TOAST E INTRO */
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--pink-dark); color: #fff; padding: 12px 24px; border-radius: 30px; font-size: 0.75rem; z-index: 9999; opacity: 0; transition: all 0.4s ease; font-weight: 600; letter-spacing: 1px; }
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+#contenedor-principal { position: fixed; inset: 0; z-index: 5000; background: var(--pink-pastel); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+#imgSobreEstetica { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; transition: opacity 0.5s ease; }
+#videoSobre { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: none; }
+#capa-boton { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); z-index: 5001; width: 90%; max-width: 320px; }
+
+.boton-rosa-inicio { 
+  background: var(--white); 
+  color: var(--pink-dark); 
+  padding: 16px 28px; 
+  border-radius: 50px; 
+  font-size: 0.75rem; 
+  letter-spacing: 2px; 
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid rgba(214, 152, 163, 0.3); 
+  box-shadow: 0 10px 25px rgba(214, 152, 163, 0.3); 
+}
+
+.music-btn { position: fixed; bottom: 20px; right: 20px; width: 44px; height: 44px; background: var(--pink-dark); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 4999; cursor: pointer; display: none; box-shadow: 0 4px 12px rgba(214, 152, 163, 0.4); }
+
+.reveal { opacity: 0; transform: translateY(25px); transition: all 0.8s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.footer-xv { padding: 40px 20px; background-color: var(--pink-pastel); color: var(--pink-dark); }
+.names-script-footer { font-family: var(--font-cursive); font-size: 3.5rem; font-weight: normal; margin-bottom: 10px; }
+.footer-xv p { font-size: 9px; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; }
+
+.mt-10 { margin-top: 10px; }
+.mt-15 { margin-top: 15px; }
+.mt-20 { margin-top: 20px; }
+.mt-25 { margin-top: 25px; }
+.mt-30 { margin-top: 30px; }
+
+.con-carino-text {
+  font-family: var(--font-serif);
+  font-size: 1.6rem; /* Aumentamos el tamaño */
+  font-style: italic; /* Lo hacemos cursivo elegante */
+  font-weight: 600; /* Letra más gordita para que no se pierda */
+  color: var(--pink-dark); 
+  text-transform: none; /* Forzamos a que NO esté todo en mayúsculas */
+  letter-spacing: 1px;
+  margin-bottom: -5px; /* Pegadito al nombre */
+}

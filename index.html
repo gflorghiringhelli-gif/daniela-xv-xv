@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mis 15 Años · Daniela</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="toast" class="toast">¡Alias copiado! 📋✨</div>
+
+    <!-- MÚSICA -->
+    <audio id="musicaInvitacion" preload="auto" loop>
+        <source src="img/musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-toggle" class="music-btn" onclick="toggleMusic()">
+        <i class="fa-solid fa-music"></i>
+    </div>
+    
+    <!-- INTRO CINEMATOGRÁFICA (SOBRE DE INICIO) -->
+    <div id="contenedor-principal" onclick="activarInvitacion()">
+        <video id="videoSobre" playsinline muted preload="auto">
+            <source src="img/1.mp4" type="video/mp4">
+        </video>
+        <img src="img/sobre.png" alt="Sobre XV" id="imgSobreEstetica">
+        
+        <div id="capa-boton">
+            <div class="boton-rosa-inicio" id="btn-toca-abrir">
+                <i class="fa-solid fa-envelope-open-text"></i> Tocar para abrir
+            </div>
+        </div>
+    </div>
+
+    <!-- INVITACIÓN WEB XV AÑOS -->
+    <div id="seccion-final" class="oculto">
+
+        <!-- PORTADA CON VIDEO (SIN TEXTO) -->
+        <header class="video-hero-section">
+            <video id="videoPortada" playsinline muted preload="auto">
+                <source src="img/portada.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay-gradient"></div>
+        </header>
+
+        <div class="bloque-contenido-general">
+            
+            <!-- MENSAJE DE XV AÑOS -->
+            <section class="section-pad reveal">
+                <div class="card-pastel text-center">
+                    <p class="xv-message-text">
+                        Hay momentos inolvidables que se atesoran en el corazón para siempre.<br><br>
+                        Hoy comienzo una nueva y hermosa etapa en mi vida, y me llena de inmensa felicidad poder compartir la magia de mi decimoquinto cumpleaños junto a las personas que más quiero.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SAVE THE DATE INTERACTIVO (RASPAR CÍRCULOS) -->
+            <section class="section-pad reveal text-center">
+                
+                <h2 class="title-elegant">SAVE THE DATE</h2>
+                <p class="subtitle-cursive" style="font-size: 1.8rem;">Raspa los círculos para descubrir la fecha</p>
+                
+                <div class="scratch-circles-wrapper mt-20">
+                    <!-- DÍA -->
+                    <div class="circle-scratch-card">
+                        <div class="circle-reveal-content">
+                            <span class="circle-number">29</span>
+                            <span class="circle-label">DÍA</span>
+                        </div>
+                        <canvas id="scratch-dia" class="scratch-canvas"></canvas>
+                    </div>
+                    <!-- MES -->
+                    <div class="circle-scratch-card">
+                        <div class="circle-reveal-content">
+                            <span class="circle-number">11</span>
+                            <span class="circle-label">MES</span>
+                        </div>
+                        <canvas id="scratch-mes" class="scratch-canvas"></canvas>
+                    </div>
+                    <!-- AÑO -->
+                    <div class="circle-scratch-card">
+                        <div class="circle-reveal-content">
+                            <span class="circle-number">26</span>
+                            <span class="circle-label">AÑO</span>
+                        </div>
+                        <canvas id="scratch-ano" class="scratch-canvas"></canvas>
+                    </div>
+                </div>
+
+                <!-- ESTE CONTENEDOR SE MUESTRA AL RASPAR LOS 3 CÍRCULOS -->
+                <div id="fecha-revelada" class="std-revealed-info">
+                    <p class="subtitle-cursive mt-25">Falta muy poco...</p>
+                    
+                    <div class="countdown-container mt-20">
+                        <div class="time-box">
+                            <span id="dias">00</span>
+                            <small>DÍAS</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="horas">00</span>
+                            <small>HS</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="minutos">00</span>
+                            <small>MIN</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="segundos">00</span>
+                            <small>SEG</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CRONOGRAMA Y UBICACIÓN -->
+            <section class="section-pad reveal text-center">
+                <div class="card-pastel">
+                    <h2 class="title-elegant">DÓNDE & CUÁNDO</h2>
+                    <p class="subtitle-cursive">Te espero para celebrar</p>
+
+                    <div class="timeline-container mt-25">
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i class="fa-solid fa-glass-cheers"></i></div>
+                            <div class="timeline-content">
+                                <h3>Recepción y Fiesta</h3>
+                                <p class="t-date">20:30 HS</p>
+                                <p class="t-place">Golden Horse</p>
+                                <a href="https://maps.app.goo.gl/Gb9UE3vFqBG941687?g_st=iw" target="_blank" class="btn-map mt-10"><i class="fa-solid fa-location-dot"></i> Ver en mapa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DRESS CODE -->
+            <section class="section-pad reveal text-center">
+                <h2 class="title-elegant mt-10">DRESS CODE</h2>
+                <p class="subtitle-cursive">Código de Vestimenta</p>
+                <div class="dress-code-box mt-15">
+                    <p class="dress-badge">ELEGANTE</p>
+                    <p class="dress-rule mt-10">Se ruega <strong>evitar el color blanco y beige</strong>.</p>
+                </div>
+            </section>
+
+            <!-- SUGERENCIA DE REGALO INTERACTIVA -->
+            <section class="section-pad reveal">
+                <div class="card-pastel text-center">
+                    <div class="icon-circle-head mt-10"><i class="fa-solid fa-gift"></i></div>
+                    <h2 class="title-elegant mt-15">SUGERENCIA DE REGALO</h2>
+                    <p class="subtitle-cursive">Si deseas tener un detalle</p>
+                    
+                    <div class="mt-20">
+                        <button class="btn-accordion-toggle" onclick="toggleGiftAccordion()">
+                            <i class="fa-solid fa-gift" style="margin-right:8px;"></i> Ver opciones de regalo
+                        </button>
+                        
+                        <div id="gift-content" class="gift-accordion-content">
+                            <p class="gift-text mt-15">
+                                Tu presencia es mi mayor regalo, pero si deseas hacerme un presente, me encantaría recibir <strong>maquillaje, ropa o calzado</strong>. 
+                                <br><br>O si deseas hacer una transferencia...
+                            </p>
+
+                            <div class="bank-box mt-15">
+                                <p class="bank-alias">Alias: 0994987828</p>
+                                <button class="btn-copy mt-10" onclick="copiarAlias('0994987828')"><i class="fa-solid fa-copy"></i> Copiar Alias</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ÁLBUM COLECTIVO -->
+            <section class="section-pad reveal">
+                <div class="card-pastel text-center">
+                    <div class="icon-circle-head mt-10"><i class="fa-solid fa-camera-retro"></i></div>
+                    <h2 class="title-elegant mt-15">ÁLBUM COLECTIVO</h2>
+                    <p class="subtitle-cursive">Comparte tus recuerdos</p>
+                    
+                    <p class="gift-text mt-15">
+                        Ayúdame a capturar los mejores momentos de esta noche inolvidable. Sube tus fotos y videos a nuestra carpeta compartida para que todos podamos recordarlos.
+                    </p>
+
+                    <a href="https://drive.google.com/drive/folders/11lcpMePzT2ShiMnxZTvTO_8cypzb5HKg?usp=sharing" class="btn-main mt-20" target="_blank" style="background-color: var(--white); color: var(--pink-dark); border: 2px solid var(--pink-dark);">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> SUBIR FOTOS Y VIDEOS
+                    </a>
+                </div>
+            </section>
+
+            <!-- CONFIRMACIÓN DE ASISTENCIA -->
+            <section class="section-pad reveal text-center">
+                <h2 class="title-elegant">ASISTENCIA</h2>
+                <p class="subtitle-cursive">Espero contar contigo</p>
+                <p class="rsvp-limit mt-10">Por favor, confirmar antes del 20 de Noviembre de 2026</p>
+
+                <a href="https://wa.me/595994987828?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%2015%20años%20de%20Daniela%20✨" class="btn-main mt-20" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> CONFIRMAR POR WHATSAPP
+                </a>
+            </section>
+
+            <footer class="footer-xv mt-30">
+                <p class="con-carino-text">Con cariño,</p>
+                <h2 class="names-script-footer">Daniela</h2>
+                <p>© GHISA DIGITAL · DESIGN STUDIO</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
